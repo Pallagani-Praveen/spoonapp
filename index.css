@@ -55,6 +55,7 @@ ul li{
      border:none;
      height: 25px;
      border-radius: 2px;
+     
  }
 
  .form input:hover{
@@ -66,4 +67,12 @@ ul li{
      color:black;
      border-radius: 5px;
      padding: 2px 5px;
+ }
+
+ .cross{
+   float: right;
+   border-radius:50%;
+   background-color: green;
+   padding: 10px;
+   color:#fff;
  }
