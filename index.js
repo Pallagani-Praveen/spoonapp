@@ -1,19 +1,3 @@
-  var firebaseConfig = {
-    apiKey: "AIzaSyAxWw3EsPlFXll9-esUnRTmK8G1OVg0pBA",
-    authDomain: "fir-practice-5fbd0.firebaseapp.com",
-    databaseURL: "https://fir-practice-5fbd0.firebaseio.com",
-    projectId: "fir-practice-5fbd0",
-    storageBucket: "fir-practice-5fbd0.appspot.com",
-    messagingSenderId: "762095915000",
-    appId: "1:762095915000:web:cbbee9edd54be3f4c0100d",
-    measurementId: "G-P5KJ33KEB3"
-  };
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-  const db = firebase.firestore();
-  const spnRef = db.collection('spoons');
-
   // ultility function
   // const removeDoc = id =>{
   //   const li = document.querySelector('[data-id="'+id+'"]');
@@ -23,12 +7,16 @@
   // }
 
 function renderSpoon(doc){
-    const ul = document.querySelector('.list-spoons');
-    const li = document.createElement('li');
-    const name = document.createElement('span');
-    const city = document.createElement('span');
-    const br = document.createElement('br');
-    const cross = document.createElement('div');
+    let ul = document.querySelector('.list-spoons');
+    let li = document.createElement('li');
+    let name = document.createElement('span');
+    let city = document.createElement('span');
+    let br = document.createElement('br');
+    let cross = document.createElement('div');
+
+    const update = document.createElement('a');
+    update.textContent = 'update';
+
     cross.textContent = 'X';
     cross.setAttribute('class','cross');
     li.setAttribute('data-id',doc.id);
@@ -36,6 +24,7 @@ function renderSpoon(doc){
     city.textContent = 'Body : '+doc.data().body;
     li.appendChild(name);
     li.appendChild(cross);
+    li.appendChild(update);
     li.appendChild(br);
     li.appendChild(city);
     ul.appendChild(li);
@@ -52,6 +41,10 @@ function renderSpoon(doc){
         }
       });
     });
+
+    update.addEventListener('click',(e)=>{
+      e.target.setAttribute('href','./update.html?id='+doc.id);
+    });
 }
 
   // not a real time data getting function
@@ -63,14 +56,14 @@ function renderSpoon(doc){
 
   // real time data getting function
   spnRef.onSnapshot(snapShot=>{
-    const changes = snapShot.docChanges();
+    let changes = snapShot.docChanges();
     changes.forEach((change) => {
       if(change.type==='added'){
       renderSpoon(change.doc);
       }
       else if(change.type==='removed'){
-        const li = document.querySelector('[data-id="'+change.doc.id+'"]');
-        const ul = document.querySelector('.list-spoons');
+        let li = document.querySelector('[data-id="'+change.doc.id+'"]');
+        let ul = document.querySelector('.list-spoons');
         ul.removeChild(li);
        // this function gives immidiate update on the page
       }

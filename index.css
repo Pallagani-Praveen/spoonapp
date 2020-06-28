@@ -26,19 +26,20 @@ ul li{
     padding: 10px;
     background-color: #eee;
     border-top-right-radius:25px ;
+    font-family :'Courier New', Courier, monospace
 }
 
 .list-spoons li span:nth-child(1){
    color:red;
    padding: 5px;
-   font-family: 'Courier New', Courier, monospace;
+   /* font-family: 'Courier New', Courier, monospace; */
 }
 
-.list-spoons li >*:nth-child(3){
+.list-spoons li >*:nth-child(5){
     color:green;
     padding: 5px;
     padding-left: 5px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
  }
 
  .form{
@@ -70,8 +71,21 @@ ul li{
 
  .cross{
    float: right;
-   border-radius:50%;
+   border-radius:5px;
    background-color: green;
-   padding: 10px;
+   padding: 6px 8px;
    color:#fff;
+   cursor: pointer;
+ }
+
+ li a{
+   float: right;
+   border: 2px solid #fff;
+   margin-right: 5px;
+   border-radius:5px;
+   border-color: green;
+   padding: 5px;
+
+   color:green;
+   cursor: pointer;
  }
