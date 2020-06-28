@@ -28,10 +28,33 @@ function renderSpoon(doc){
     ul.appendChild(li);
 }
 
-  spnRef.get().then((snapShot)=>{
-      snapShot.docs.forEach((doc)=>{
-        renderSpoon(doc);
-      });
+  // not a real time data getting function
+  // spnRef.get().then((snapShot)=>{
+  //     snapShot.docs.forEach((doc)=>{
+  //       renderSpoon(doc);
+  //     });
+  // });
+
+  // real time data getting function
+  spnRef.onSnapshot(snapShot=>{
+    const changes = snapShot.docChanges();
+    changes.forEach((change) => {
+      renderSpoon(change.doc);
+    });
+
   });
 
-  
+
+  const saveButton = document.querySelector('.form button');
+  saveButton.addEventListener('click',(e)=>{
+    var name = document.querySelector('.form input[name="name"]');
+    var body = document.querySelector('.form input[name="body"]');
+    e.preventDefault();
+    spnRef.add({
+      name:name.value,
+      body:body.value
+    });
+    name.value = '';
+    body.value = '';
+
+  });
