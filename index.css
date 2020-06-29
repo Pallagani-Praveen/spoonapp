@@ -62,7 +62,7 @@ ul li{
     border-bottom: 2px solid rebeccapurple;
  }
 
- .form button{
+ .form .buttn{
      background-color: #fff;
      color:black;
      border-radius: 5px;
@@ -88,4 +88,23 @@ ul li{
 
    color:green;
    cursor: pointer;
+ }
+
+
+ .auth-links{
+   width: 300px;
+   margin-right: 15px;
+   display: flex;
+   border: 2px solid gray;
+   padding: 5px 10px;
+   border-radius: 5px;
+
+
+ }
+
+ .auth-links a{
+   flex:0 0 100px;
+   justify-content: space-between;
+    text-decoration: none;
+    font-family: sans-serif;
  }

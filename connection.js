@@ -13,3 +13,4 @@ firebase.analytics();
 
 let db = firebase.firestore();
 let spnRef = db.collection('spoons');
+let auth = firebase.auth();
